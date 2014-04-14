@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  SlidePageDemo
 //
 //  Created by Tim on 14/4/14.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SlidePageViewController;
-@interface ViewController : UIViewController
 
+@interface MainViewController : UIViewController
 
 @end

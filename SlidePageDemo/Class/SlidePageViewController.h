@@ -10,7 +10,9 @@
 
 @interface SlidePageViewController : UIViewController
 
+@property(nonatomic,assign) int maxLeftShow;
+@property(nonatomic,assign) int maxRightShow;
 
-
-
+-(void) SetMainControl:(UIViewController*)mainControl   rightSideBackgroundController:(UIViewController*)rightControl
+    leftSideBackgroundController:(UIViewController*)leftControl;
 @end

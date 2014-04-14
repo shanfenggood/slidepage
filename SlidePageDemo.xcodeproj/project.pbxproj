@@ -22,6 +22,13 @@
 		2290667318FBCD3F000B71D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2290665218FBCD3F000B71D7 /* UIKit.framework */; };
 		2290667B18FBCD3F000B71D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2290667918FBCD3F000B71D7 /* InfoPlist.strings */; };
 		2290667D18FBCD3F000B71D7 /* SlidePageDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2290667C18FBCD3F000B71D7 /* SlidePageDemoTests.m */; };
+		2290668918FBD162000B71D7 /* SlidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2290668818FBD162000B71D7 /* SlidePageViewController.m */; };
+		2290668D18FC0DEE000B71D7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2290668B18FC0DEE000B71D7 /* MainViewController.m */; };
+		2290668E18FC0DEE000B71D7 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2290668C18FC0DEE000B71D7 /* MainViewController.xib */; };
+		2290669218FC0E02000B71D7 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2290669018FC0E01000B71D7 /* LeftViewController.m */; };
+		2290669318FC0E02000B71D7 /* LeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2290669118FC0E01000B71D7 /* LeftViewController.xib */; };
+		2290669718FC0E12000B71D7 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2290669518FC0E12000B71D7 /* RightViewController.m */; };
+		2290669818FC0E12000B71D7 /* RightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2290669618FC0E12000B71D7 /* RightViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +62,17 @@
 		2290667818FBCD3F000B71D7 /* SlidePageDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SlidePageDemoTests-Info.plist"; sourceTree = "<group>"; };
 		2290667A18FBCD3F000B71D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2290667C18FBCD3F000B71D7 /* SlidePageDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlidePageDemoTests.m; sourceTree = "<group>"; };
+		2290668718FBD162000B71D7 /* SlidePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlidePageViewController.h; path = Class/SlidePageViewController.h; sourceTree = "<group>"; };
+		2290668818FBD162000B71D7 /* SlidePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlidePageViewController.m; path = Class/SlidePageViewController.m; sourceTree = "<group>"; };
+		2290668A18FC0DEE000B71D7 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		2290668B18FC0DEE000B71D7 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		2290668C18FC0DEE000B71D7 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		2290668F18FC0E01000B71D7 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		2290669018FC0E01000B71D7 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		2290669118FC0E01000B71D7 /* LeftViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftViewController.xib; sourceTree = "<group>"; };
+		2290669418FC0E12000B71D7 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightViewController.h; sourceTree = "<group>"; };
+		2290669518FC0E12000B71D7 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
+		2290669618FC0E12000B71D7 /* RightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +132,7 @@
 		2290665418FBCD3F000B71D7 /* SlidePageDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2290668618FBCE0D000B71D7 /* Class */,
 				2290665D18FBCD3F000B71D7 /* AppDelegate.h */,
 				2290665E18FBCD3F000B71D7 /* AppDelegate.m */,
 				2290666018FBCD3F000B71D7 /* Main_iPhone.storyboard */,
@@ -122,6 +141,15 @@
 				2290666718FBCD3F000B71D7 /* ViewController.m */,
 				2290666918FBCD3F000B71D7 /* Images.xcassets */,
 				2290665518FBCD3F000B71D7 /* Supporting Files */,
+				2290668A18FC0DEE000B71D7 /* MainViewController.h */,
+				2290668B18FC0DEE000B71D7 /* MainViewController.m */,
+				2290668C18FC0DEE000B71D7 /* MainViewController.xib */,
+				2290668F18FC0E01000B71D7 /* LeftViewController.h */,
+				2290669018FC0E01000B71D7 /* LeftViewController.m */,
+				2290669118FC0E01000B71D7 /* LeftViewController.xib */,
+				2290669418FC0E12000B71D7 /* RightViewController.h */,
+				2290669518FC0E12000B71D7 /* RightViewController.m */,
+				2290669618FC0E12000B71D7 /* RightViewController.xib */,
 			);
 			path = SlidePageDemo;
 			sourceTree = "<group>";
@@ -153,6 +181,15 @@
 				2290667918FBCD3F000B71D7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2290668618FBCE0D000B71D7 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				2290668718FBD162000B71D7 /* SlidePageViewController.h */,
+				2290668818FBD162000B71D7 /* SlidePageViewController.m */,
+			);
+			name = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,7 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2290666518FBCD3F000B71D7 /* Main_iPad.storyboard in Resources */,
+				2290669818FC0E12000B71D7 /* RightViewController.xib in Resources */,
+				2290669318FC0E02000B71D7 /* LeftViewController.xib in Resources */,
 				2290666A18FBCD3F000B71D7 /* Images.xcassets in Resources */,
+				2290668E18FC0DEE000B71D7 /* MainViewController.xib in Resources */,
 				2290666218FBCD3F000B71D7 /* Main_iPhone.storyboard in Resources */,
 				2290665918FBCD3F000B71D7 /* InfoPlist.strings in Resources */,
 			);
@@ -253,8 +293,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2290669718FC0E12000B71D7 /* RightViewController.m in Sources */,
 				2290666818FBCD3F000B71D7 /* ViewController.m in Sources */,
+				2290668918FBD162000B71D7 /* SlidePageViewController.m in Sources */,
 				2290665F18FBCD3F000B71D7 /* AppDelegate.m in Sources */,
+				2290669218FC0E02000B71D7 /* LeftViewController.m in Sources */,
+				2290668D18FC0DEE000B71D7 /* MainViewController.m in Sources */,
 				2290665B18FBCD3F000B71D7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +437,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SlidePageDemo/SlidePageDemo-Prefix.pch";
 				INFOPLIST_FILE = "SlidePageDemo/SlidePageDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -406,6 +451,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SlidePageDemo/SlidePageDemo-Prefix.pch";
 				INFOPLIST_FILE = "SlidePageDemo/SlidePageDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
