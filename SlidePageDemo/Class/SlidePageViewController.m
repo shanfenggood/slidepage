@@ -2,7 +2,7 @@
 //  SlidePageViewController.m
 //  SlidePageDemo
 //
-//  Created by Tim on 14/4/14.
+//  Created by shanfeng on 14/4/14.
 //  Copyright (c) 2014 shanfeng. All rights reserved.
 //
 
@@ -24,6 +24,26 @@
 
 @implementation SlidePageViewController
 
+#pragma mark slide interface
+-(void) SlideLeftSideShow
+{
+    
+    [self _rightSideView]?[self _rightSideView].hidden=YES:false;
+    [self _leftSideView]?[self _leftSideView].hidden=NO:false;
+    [self _animationSlideToX:_maxLeftShow?_maxLeftShow:[self _mainView].frame.size.width duration:0.3f];
+
+}
+-(void) SlideDobuleSideHidden{
+    [self _animationSlideToX:0 duration:0.3f];
+}
+
+-(void) SlideRightSideShow{
+    [self _rightSideView]?[self _rightSideView].hidden=NO:false;
+    [self _leftSideView]?[self _leftSideView].hidden=YES:false;
+    
+    [self _animationSlideToX:_maxRightShow?-_maxRightShow:-[self _mainView].frame.size.width duration:0.3f];
+
+}
 
 
 -(void) SetMainControl:(UIViewController*)mainControl   rightSideBackgroundController:(UIViewController*)rightControl
@@ -104,10 +124,23 @@
     return _mainController?_mainController.view:nil;
 }
 
+-(void) _transformToX:(int)x
+{
+    CGAffineTransform t = CGAffineTransformMakeTranslation(x,0);
+    
+    double scaleRate  = 1;
+    if (x>0) {
+        scaleRate -= 0.05 * abs(x)/(_maxLeftShow?_maxLeftShow:self.view.frame.size.width);
+    }else if(x<0){
+        scaleRate -= 0.05 * abs(x)/(_maxRightShow?_maxRightShow:self.view.frame.size.width);
+    }
+    [self _mainView].transform = CGAffineTransformScale(t,scaleRate,scaleRate);
+
+}
 -(void) _animationSlideToX:(int) x duration:(NSTimeInterval)interval{
     [UIView animateWithDuration:interval animations:^{
         
-        [self _mainView].transform = CGAffineTransformMakeTranslation(x, 0);
+        [self _transformToX:x];
         
     } completion:^(BOOL finished) {
         
@@ -135,42 +168,38 @@
     if (_maxLeftShow && translation>_maxLeftShow ) {
         translation = _maxLeftShow;
     }
-
-    [self _mainView].transform = CGAffineTransformMakeTranslation(translation, 0);
-    
     if (panGestureReconginzer.state == UIGestureRecognizerStateEnded)
     {
         int dx = [self _mainView].transform.tx;
 
         if (0<abs(dx) && abs(dx) <=20 ) {
-            [self _animationSlideToX:0 duration:0.3f];
+            [self _animationSlideToX:0 duration:0.1f];
         }else if (dx<0){
             if ([panGestureReconginzer translationInView:self.view].x <0) {
-            
-            [self _animationSlideToX:_maxRightShow?-_maxRightShow:-[self _mainView].frame.size.width duration:0.5f];
+                [self SlideRightSideShow];
             }else{
-                [self _animationSlideToX:0 duration:0.5f];
+                [self SlideDobuleSideHidden];
             }
             
         }else if (dx>0){
             if([panGestureReconginzer translationInView:self.view].x > 0){
-                
-                [self _animationSlideToX:_maxLeftShow?_maxLeftShow:[self _mainView].frame.size.width duration:0.5f];
+                [self SlideLeftSideShow];
             }else{
-                [self _animationSlideToX:0 duration:0.5f];
+                [self SlideDobuleSideHidden];
             }
         }
         _mainViewPreTransformTx =[self _mainView].transform.tx;
         
-    }
-    
-    if ([self _mainView].frame.origin.x >0 && [self _rightSideView]) {
-        [self _rightSideView].hidden = YES;
-        [self _leftSideView]?[self _leftSideView].hidden = NO:false;
-    }
-    if ([self _mainView].frame.origin.x <0 && [self _leftSideView]) {
-        [self _leftSideView].hidden = YES;
-        [self _rightSideView]?[self _rightSideView].hidden = NO:false;
+    }else{
+        [self _transformToX:translation];
+        if ([self _mainView].frame.origin.x >0 && [self _rightSideView]) {
+            [self _rightSideView].hidden = YES;
+            [self _leftSideView]?[self _leftSideView].hidden = NO:false;
+        }
+        if ([self _mainView].frame.origin.x <0 && [self _leftSideView]) {
+            [self _leftSideView].hidden = YES;
+            [self _rightSideView]?[self _rightSideView].hidden = NO:false;
+        }
     }
     
     

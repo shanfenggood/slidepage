@@ -2,7 +2,7 @@
 //  ViewController.m
 //  SlidePageDemo
 //
-//  Created by Tim on 14/4/14.
+//  Created by shanfeng on 14/4/14.
 //  Copyright (c) 2014 shanfeng. All rights reserved.
 //
 
@@ -31,7 +31,7 @@
     
     [_slideController SetMainControl: [[MainViewController alloc] init]
        rightSideBackgroundController:
-     [[RightViewController alloc] init]
+         [[RightViewController alloc] init]
 //     nil
         leftSideBackgroundController:
 //     nil
