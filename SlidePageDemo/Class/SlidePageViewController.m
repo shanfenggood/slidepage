@@ -68,7 +68,7 @@
     }
     
 
-    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(slideView:)]];
+    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_slideView:)]];
     // Do any additional setup after loading the view.
 }
 
@@ -104,31 +104,76 @@
     return _mainController?_mainController.view:nil;
 }
 
-- (void)slideView:(UIPanGestureRecognizer *)panGestureReconginzer
+-(void) _animationSlideToX:(int) x duration:(NSTimeInterval)interval{
+    [UIView animateWithDuration:interval animations:^{
+        
+        [self _mainView].transform = CGAffineTransformMakeTranslation(x, 0);
+        
+    } completion:^(BOOL finished) {
+        
+        _mainViewPreTransformTx =[self _mainView].transform.tx;
+        
+    }];
+
+}
+- (void)_slideView:(UIPanGestureRecognizer *)panGestureReconginzer
 {
     CGFloat translation = [panGestureReconginzer translationInView:self.view].x + _mainViewPreTransformTx;
     
-    if ((![self _leftSideView] && ([self _mainView].frame.origin.x+translation) >=0) || (![self _rightSideView] && ([self _mainView].frame.origin.x+translation )<=-[self _mainView].frame.size.width))
+    //set not slide more
+    if (![self _leftSideView] && ([self _mainView].frame.origin.x+translation) >=0)
     {
         translation = 0;
     }
-    
+    if (![self _rightSideView] && ([self _mainView].frame.origin.x+translation )<0) {
+        translation = 0;
+    }
+    //set not slide more
+    if (_maxRightShow && translation<-_maxRightShow ) {
+        translation = -_maxRightShow;
+    }
+    if (_maxLeftShow && translation>_maxLeftShow ) {
+        translation = _maxLeftShow;
+    }
+
     [self _mainView].transform = CGAffineTransformMakeTranslation(translation, 0);
-    
     
     if (panGestureReconginzer.state == UIGestureRecognizerStateEnded)
     {
-        _mainViewPreTransformTx = [self _mainView].transform.tx;
+        int dx = [self _mainView].transform.tx;
+
+        if (0<abs(dx) && abs(dx) <=20 ) {
+            [self _animationSlideToX:0 duration:0.3f];
+        }else if (dx<0){
+            if ([panGestureReconginzer translationInView:self.view].x <0) {
+            
+            [self _animationSlideToX:_maxRightShow?-_maxRightShow:-[self _mainView].frame.size.width duration:0.5f];
+            }else{
+                [self _animationSlideToX:0 duration:0.5f];
+            }
+            
+        }else if (dx>0){
+            if([panGestureReconginzer translationInView:self.view].x > 0){
+                
+                [self _animationSlideToX:_maxLeftShow?_maxLeftShow:[self _mainView].frame.size.width duration:0.5f];
+            }else{
+                [self _animationSlideToX:0 duration:0.5f];
+            }
+        }
+        _mainViewPreTransformTx =[self _mainView].transform.tx;
+        
     }
     
     if ([self _mainView].frame.origin.x >0 && [self _rightSideView]) {
-        [self _rightSideView].hidden = NO;
-        [self _leftSideView]?[self _leftSideView].hidden = YES:false;
+        [self _rightSideView].hidden = YES;
+        [self _leftSideView]?[self _leftSideView].hidden = NO:false;
     }
     if ([self _mainView].frame.origin.x <0 && [self _leftSideView]) {
-        [self _leftSideView].hidden = NO;
-        [self _rightSideView]?[self _rightSideView].hidden = YES:false;
+        [self _leftSideView].hidden = YES;
+        [self _rightSideView]?[self _rightSideView].hidden = NO:false;
     }
+    
+    
 }
 
 @end
