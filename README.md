@@ -1,5 +1,3 @@
-slidepage
-=========
 # Function
 
 @property(nonatomic,assign) int maxLeftShow;
@@ -14,6 +12,10 @@ slidepage
 -(void) SlideRightSideShow;
 
 
--(void) SetMainControl:(UIViewController*)mainControl   rightSideBackgroundController:(UIViewController*)rightControl leftSideBackgroundController:(UIViewController*)leftControl;
+-(void) SetMainControl:(UIViewController*)mainControl   
+
+        rightSideBackgroundController:(UIViewController*)rightControl  
+        
+        leftSideBackgroundController:(UIViewController*)leftControl;
 
 
