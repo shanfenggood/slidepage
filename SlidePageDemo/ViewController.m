@@ -31,7 +31,14 @@
     
     [_slideController SetMainControl: [[MainViewController alloc] init]
        rightSideBackgroundController:[[RightViewController alloc] init]
-        leftSideBackgroundController:[[LeftViewController alloc] init]];
+        leftSideBackgroundController:
+//     nil
+            [[LeftViewController alloc] init]
+     ];
+    
+    _slideController.maxLeftShow = 200;
+    _slideController.maxRightShow = 200;
+    
     [self.view addSubview:_slideController.view];
 	// Do any additional setup after loading the view, typically from a nib.
 }

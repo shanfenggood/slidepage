@@ -14,7 +14,7 @@
     UIViewController* _rightSideBackgroundController;
     UIViewController* _leftSideBackgroundController;
     
-    
+    int _mainViewPreTransformTx;
     
 }
 
@@ -53,15 +53,19 @@
 {
     [super viewDidLoad];
     
-    [self addChildViewController:_mainController];
-    [self addChildViewController:_rightSideBackgroundController];
-    [self addChildViewController:_leftSideBackgroundController];
 
-    
-    
-    _rightSideBackgroundController?[self.view addSubview: _rightSideBackgroundController.view]:false;
-    _leftSideBackgroundController?[self.view addSubview: _leftSideBackgroundController.view]:false;
-    _mainController?[self.view addSubview: _mainController.view]:false;
+    if(_rightSideBackgroundController){
+        [self addChildViewController:_rightSideBackgroundController];
+        [self.view addSubview: _rightSideBackgroundController.view];
+    }
+    if(_leftSideBackgroundController){
+        [self addChildViewController:_leftSideBackgroundController];
+        [self.view addSubview: _leftSideBackgroundController.view];
+    }
+    if(_mainController){
+        [self addChildViewController:_mainController];
+        [self.view addSubview: _mainController.view];
+    }
     
 
     [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(slideView:)]];
@@ -102,8 +106,29 @@
 
 - (void)slideView:(UIPanGestureRecognizer *)panGestureReconginzer
 {
-    CGFloat translation = [panGestureReconginzer translationInView:self.view].x;
+    CGFloat translation = [panGestureReconginzer translationInView:self.view].x + _mainViewPreTransformTx;
+    
+    if ((![self _leftSideView] && ([self _mainView].frame.origin.x+translation) >=0) || (![self _rightSideView] && ([self _mainView].frame.origin.x+translation )<=-[self _mainView].frame.size.width))
+    {
+        translation = 0;
+    }
+    
     [self _mainView].transform = CGAffineTransformMakeTranslation(translation, 0);
+    
+    
+    if (panGestureReconginzer.state == UIGestureRecognizerStateEnded)
+    {
+        _mainViewPreTransformTx = [self _mainView].transform.tx;
+    }
+    
+    if ([self _mainView].frame.origin.x >0 && [self _rightSideView]) {
+        [self _rightSideView].hidden = NO;
+        [self _leftSideView]?[self _leftSideView].hidden = YES:false;
+    }
+    if ([self _mainView].frame.origin.x <0 && [self _leftSideView]) {
+        [self _leftSideView].hidden = NO;
+        [self _rightSideView]?[self _rightSideView].hidden = YES:false;
+    }
 }
 
 @end
