@@ -11,7 +11,8 @@
 #import "LeftViewController.h"
 #import "RightViewController.h"
 #import "MainViewController.h"
-
+#import "TabScrollViewController.h"
+#import "TabInfo.h"
 @interface ViewController ()
 
 {
@@ -29,10 +30,24 @@
     
     _slideController = [[SlidePageViewController alloc] init];
     
-    [_slideController SetMainControl: [[MainViewController alloc] init]
+    
+    
+    
+    
+    [_slideController SetMainControl:
+//        [[MainViewController alloc] init]
+     
+                [[TabScrollViewController alloc ] initWithTabs:
+                @[
+                  [[TabInfo alloc] initWithTitle:@"1" controller:   [[RightViewController alloc] init]],
+
+                  [[TabInfo alloc] initWithTitle:@"2" controller:[[LeftViewController alloc] init]],
+                   [[TabInfo alloc] initWithTitle:@"3" controller:[[RightViewController alloc] init]],
+                   [[TabInfo alloc] initWithTitle:@"4" controller:[[LeftViewController alloc] init]]
+                   ]]
        rightSideBackgroundController:
-         [[RightViewController alloc] init]
-//     nil
+//         [[RightViewController alloc] init]
+     nil
         leftSideBackgroundController:
 //     nil
             [[LeftViewController alloc] init]

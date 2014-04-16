@@ -25,6 +25,13 @@
 @implementation SlidePageViewController
 
 #pragma mark slide interface
+-(void) SlideMainViewWithTx:(int)tx
+{
+    [self _rightSideView]?[self _rightSideView].hidden=(tx>0):false;
+    [self _leftSideView]?[self _leftSideView].hidden=(tx<0):false;
+    [self _animationSlideToX:_maxLeftShow?_maxLeftShow:[self _mainView].frame.size.width duration:0.3f];
+    
+}
 -(void) SlideLeftSideShow
 {
     
@@ -40,7 +47,6 @@
 -(void) SlideRightSideShow{
     [self _rightSideView]?[self _rightSideView].hidden=NO:false;
     [self _leftSideView]?[self _leftSideView].hidden=YES:false;
-    
     [self _animationSlideToX:_maxRightShow?-_maxRightShow:-[self _mainView].frame.size.width duration:0.3f];
 
 }
@@ -88,7 +94,7 @@
     }
     
 
-    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_slideView:)]];
+    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(slideView:)]];
     // Do any additional setup after loading the view.
 }
 
@@ -109,6 +115,7 @@
 }
 */
 
+
 #pragma mark - private function
 
 -(UIView*) _leftSideView
@@ -124,35 +131,10 @@
     return _mainController?_mainController.view:nil;
 }
 
--(void) _transformToX:(int)x
-{
-    CGAffineTransform t = CGAffineTransformMakeTranslation(x,0);
-    
-    double scaleRate  = 1;
-    if (x>0) {
-        scaleRate -= 0.05 * abs(x)/(_maxLeftShow?_maxLeftShow:self.view.frame.size.width);
-    }else if(x<0){
-        scaleRate -= 0.05 * abs(x)/(_maxRightShow?_maxRightShow:self.view.frame.size.width);
-    }
-    [self _mainView].transform = CGAffineTransformScale(t,scaleRate,scaleRate);
-
-}
--(void) _animationSlideToX:(int) x duration:(NSTimeInterval)interval{
-    [UIView animateWithDuration:interval animations:^{
-        
-        [self _transformToX:x];
-        
-    } completion:^(BOOL finished) {
-        
-        _mainViewPreTransformTx =[self _mainView].transform.tx;
-        
-    }];
-
-}
-- (void)_slideView:(UIPanGestureRecognizer *)panGestureReconginzer
+- (void)slideView:(UIPanGestureRecognizer *)panGestureReconginzer
 {
     CGFloat translation = [panGestureReconginzer translationInView:self.view].x + _mainViewPreTransformTx;
-    
+    NSLog(@"%f",translation);
     //set not slide more
     if (![self _leftSideView] && ([self _mainView].frame.origin.x+translation) >=0)
     {
@@ -204,5 +186,31 @@
     
     
 }
+-(void) _animationSlideToX:(int) x duration:(NSTimeInterval)interval{
+    [UIView animateWithDuration:interval animations:^{
+        
+        [self _transformToX:x];
+        
+    } completion:^(BOOL finished) {
+        
+        _mainViewPreTransformTx =[self _mainView].transform.tx;
+        
+    }];
+    
+}
+-(void) _transformToX:(int)x
+{
+    CGAffineTransform t = CGAffineTransformMakeTranslation(x,0);
+    
+    double scaleRate  = 1;
+    if (x>0) {
+        scaleRate -= 0.05 * abs(x)/(_maxLeftShow?_maxLeftShow:self.view.frame.size.width);
+    }else if(x<0){
+        scaleRate -= 0.05 * abs(x)/(_maxRightShow?_maxRightShow:self.view.frame.size.width);
+    }
+    [self _mainView].transform = CGAffineTransformScale(t,scaleRate,scaleRate);
+    
+}
+
 
 @end

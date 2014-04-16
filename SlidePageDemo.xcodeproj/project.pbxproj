@@ -29,6 +29,8 @@
 		2290669318FC0E02000B71D7 /* LeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2290669118FC0E01000B71D7 /* LeftViewController.xib */; };
 		2290669718FC0E12000B71D7 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2290669518FC0E12000B71D7 /* RightViewController.m */; };
 		2290669818FC0E12000B71D7 /* RightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2290669618FC0E12000B71D7 /* RightViewController.xib */; };
+		2290669B18FD2F19000B71D7 /* TabScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2290669A18FD2F19000B71D7 /* TabScrollViewController.m */; };
+		2290669E18FD5851000B71D7 /* TabInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2290669D18FD5851000B71D7 /* TabInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,10 @@
 		2290669418FC0E12000B71D7 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightViewController.h; sourceTree = "<group>"; };
 		2290669518FC0E12000B71D7 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
 		2290669618FC0E12000B71D7 /* RightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightViewController.xib; sourceTree = "<group>"; };
+		2290669918FD2F19000B71D7 /* TabScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabScrollViewController.h; path = Class/TabScrollViewController.h; sourceTree = "<group>"; };
+		2290669A18FD2F19000B71D7 /* TabScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabScrollViewController.m; path = Class/TabScrollViewController.m; sourceTree = "<group>"; };
+		2290669C18FD5851000B71D7 /* TabInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabInfo.h; path = Class/TabInfo.h; sourceTree = "<group>"; };
+		2290669D18FD5851000B71D7 /* TabInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabInfo.m; path = Class/TabInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +194,10 @@
 			children = (
 				2290668718FBD162000B71D7 /* SlidePageViewController.h */,
 				2290668818FBD162000B71D7 /* SlidePageViewController.m */,
+				2290669918FD2F19000B71D7 /* TabScrollViewController.h */,
+				2290669A18FD2F19000B71D7 /* TabScrollViewController.m */,
+				2290669C18FD5851000B71D7 /* TabInfo.h */,
+				2290669D18FD5851000B71D7 /* TabInfo.m */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -294,10 +304,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2290669718FC0E12000B71D7 /* RightViewController.m in Sources */,
+				2290669B18FD2F19000B71D7 /* TabScrollViewController.m in Sources */,
 				2290666818FBCD3F000B71D7 /* ViewController.m in Sources */,
 				2290668918FBD162000B71D7 /* SlidePageViewController.m in Sources */,
 				2290665F18FBCD3F000B71D7 /* AppDelegate.m in Sources */,
 				2290669218FC0E02000B71D7 /* LeftViewController.m in Sources */,
+				2290669E18FD5851000B71D7 /* TabInfo.m in Sources */,
 				2290668D18FC0DEE000B71D7 /* MainViewController.m in Sources */,
 				2290665B18FBCD3F000B71D7 /* main.m in Sources */,
 			);
