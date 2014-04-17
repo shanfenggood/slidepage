@@ -30,20 +30,17 @@
     
     _slideController = [[SlidePageViewController alloc] init];
     
-    
-    
-    
-    
+
     [_slideController SetMainControl:
 //        [[MainViewController alloc] init]
      
                 [[TabScrollViewController alloc ] initWithTabs:
                 @[
-                  [[TabInfo alloc] initWithTitle:@"1" controller:   [[RightViewController alloc] init]],
+                  [[TabInfo alloc] initWithTitle:@"title1" controller:   [[RightViewController alloc] init]],
 
-                  [[TabInfo alloc] initWithTitle:@"2" controller:[[LeftViewController alloc] init]],
-                   [[TabInfo alloc] initWithTitle:@"3" controller:[[RightViewController alloc] init]],
-                   [[TabInfo alloc] initWithTitle:@"4" controller:[[LeftViewController alloc] init]]
+                  [[TabInfo alloc] initWithTitle:@"title2" controller:[[LeftViewController alloc] init]],
+                   [[TabInfo alloc] initWithTitle:@"title3" controller:[[RightViewController alloc] init]],
+                   [[TabInfo alloc] initWithTitle:@"标题4" controller:[[LeftViewController alloc] init]]
                    ]]
        rightSideBackgroundController:
 //         [[RightViewController alloc] init]

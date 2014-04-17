@@ -528,6 +528,7 @@
 				2290668218FBCD3F000B71D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2290668318FBCD3F000B71D7 /* Build configuration list for PBXNativeTarget "SlidePageDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +537,7 @@
 				2290668518FBCD3F000B71D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

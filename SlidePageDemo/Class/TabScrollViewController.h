@@ -11,6 +11,7 @@
 
 @interface TabScrollViewController : UIViewController<UIGestureRecognizerDelegate>
 
+-(void)switchPageWithIndex:(int)index;
 
 -(TabScrollViewController*) initWithTabs:(NSArray*) tabs;
 

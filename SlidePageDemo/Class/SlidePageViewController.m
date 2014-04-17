@@ -27,8 +27,9 @@
 #pragma mark slide interface
 -(void) SlideMainViewWithTx:(int)tx
 {
-    [self _rightSideView]?[self _rightSideView].hidden=(tx>0):false;
-    [self _leftSideView]?[self _leftSideView].hidden=(tx<0):false;
+    [self _rightSideView]?[self _rightSideView].hidden=(tx>0):([self _leftSideView].hidden=NO);
+    [self _leftSideView]?[self _leftSideView].hidden=(tx<0):([self _rightSideView].hidden=NO);
+    
     [self _animationSlideToX:_maxLeftShow?_maxLeftShow:[self _mainView].frame.size.width duration:0.3f];
     
 }
@@ -36,7 +37,7 @@
 {
     
     [self _rightSideView]?[self _rightSideView].hidden=YES:false;
-    [self _leftSideView]?[self _leftSideView].hidden=NO:false;
+    [self _leftSideView]?[self _leftSideView].hidden=NO:([self _rightSideView].hidden=NO);
     [self _animationSlideToX:_maxLeftShow?_maxLeftShow:[self _mainView].frame.size.width duration:0.3f];
 
 }
@@ -45,7 +46,7 @@
 }
 
 -(void) SlideRightSideShow{
-    [self _rightSideView]?[self _rightSideView].hidden=NO:false;
+    [self _rightSideView]?[self _rightSideView].hidden=NO:([self _leftSideView].hidden=NO);
     [self _leftSideView]?[self _leftSideView].hidden=YES:false;
     [self _animationSlideToX:_maxRightShow?-_maxRightShow:-[self _mainView].frame.size.width duration:0.3f];
 
@@ -176,11 +177,11 @@
         [self _transformToX:translation];
         if ([self _mainView].frame.origin.x >0 && [self _rightSideView]) {
             [self _rightSideView].hidden = YES;
-            [self _leftSideView]?[self _leftSideView].hidden = NO:false;
+            [self _leftSideView]?[self _leftSideView].hidden = NO:([self _rightSideView].hidden=NO);
         }
         if ([self _mainView].frame.origin.x <0 && [self _leftSideView]) {
             [self _leftSideView].hidden = YES;
-            [self _rightSideView]?[self _rightSideView].hidden = NO:false;
+            [self _rightSideView]?[self _rightSideView].hidden = NO:([self _leftSideView].hidden = NO);
         }
     }
     
